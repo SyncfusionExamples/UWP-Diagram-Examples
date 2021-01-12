@@ -1,0 +1,82 @@
+﻿<Page
+    x:Class="Flowchartsample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Flowchartsample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:syncDiagram="using:Syncfusion.UI.Xaml.Diagram"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--Initialize Shapes-->
+                <ResourceDictionary Source="ms-appx:///Syncfusion.SfDiagram.UWP/Resources/BasicShapes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!--Style for Shape of the Node-->
+            <Style TargetType="Path" x:Key="ShapeStyle">
+                <Setter Property="Fill" Value="#FF5B9BD5"/>
+                <Setter Property="Stretch" Value="Fill"/>
+                <Setter Property="Stroke" Value="#FFEDF1F6"/>
+            </Style>
+
+            <Style TargetType="Path" x:Key="TargetDecoratorStyle">
+                <Setter Property="Stroke" Value="Black"/>
+                <Setter Property="Stretch" Value="Fill"/>
+                <Setter Property="Fill" Value="Black"/>
+                <Setter Property="Height" Value="10"/>
+                <Setter Property="Width" Value="10"/>
+            </Style>
+
+            <!--Style for Geometry of the Connector-->
+            <Style TargetType="Path" x:Key="ConnectorGeometryStyle">
+                <Setter Property="Stroke" Value="Black" />
+                <Setter Property="StrokeThickness" Value="1" />
+            </Style>
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <syncDiagram:SfDiagram x:Name="Diagram">
+            <syncDiagram:SfDiagram.Nodes>
+                <!--Observable Collection of NodeViewModel-->
+                <syncDiagram:NodeCollection>
+                    <!--Begin-->
+                    <syncDiagram:NodeViewModel ID="Begin" OffsetX="300" OffsetY="60" Shape="{StaticResource Ellipse}" ShapeStyle="{StaticResource ShapeStyle}" UnitHeight="40" UnitWidth="120">
+                        <syncDiagram:NodeViewModel.Annotations>
+                            <!--Observable Collection of AnnotationEditorViewModel-->
+                            <syncDiagram:AnnotationCollection>
+                                <syncDiagram:AnnotationEditorViewModel Content="Begin"/>
+                            </syncDiagram:AnnotationCollection>
+                        </syncDiagram:NodeViewModel.Annotations>
+                    </syncDiagram:NodeViewModel>
+                    <!--Process-->
+                    <syncDiagram:NodeViewModel ID="Process" UnitHeight="60" UnitWidth="120" OffsetX="300" OffsetY="140"  Shape="{StaticResource PredefinedProcess}" ShapeStyle="{StaticResource ShapeStyle}">
+                        <syncDiagram:NodeViewModel.Annotations>
+                            <syncDiagram:AnnotationCollection>
+                                <syncDiagram:AnnotationEditorViewModel Content="Process"/>
+                            </syncDiagram:AnnotationCollection>
+                        </syncDiagram:NodeViewModel.Annotations>
+                    </syncDiagram:NodeViewModel>
+                    <!--End-->
+                    <syncDiagram:NodeViewModel ID="End" UnitHeight="40" UnitWidth="40" OffsetX="300" OffsetY="225" Shape="{StaticResource Ellipse}" ShapeStyle="{StaticResource ShapeStyle}">
+                        <syncDiagram:NodeViewModel.Annotations>
+                            <syncDiagram:AnnotationCollection>
+                                <syncDiagram:AnnotationEditorViewModel Content="End"/>
+                            </syncDiagram:AnnotationCollection>
+                        </syncDiagram:NodeViewModel.Annotations>
+                    </syncDiagram:NodeViewModel>
+                </syncDiagram:NodeCollection>
+            </syncDiagram:SfDiagram.Nodes>
+            <syncDiagram:SfDiagram.Connectors>
+                <syncDiagram:ConnectorCollection>
+                    <!--Observable Collection of ConnectorViewModel-->
+                <syncDiagram:ConnectorViewModel SourceNodeID="Begin" TargetNodeID="Process" ConnectorGeometryStyle="{StaticResource ConnectorGeometryStyle}" TargetDecoratorStyle="{StaticResource TargetDecoratorStyle}"/>
+                <syncDiagram:ConnectorViewModel SourceNodeID="Process" TargetNodeID="End" ConnectorGeometryStyle="{StaticResource ConnectorGeometryStyle}" TargetDecoratorStyle="{StaticResource TargetDecoratorStyle}"/>
+                </syncDiagram:ConnectorCollection>
+            </syncDiagram:SfDiagram.Connectors>
+        </syncDiagram:SfDiagram>
+    </Grid>
+</Page>
