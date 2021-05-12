@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="Virtualization.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Virtualization"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Diagram" 
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <!--Initialize Diagram-->
+        <syncfusion:SfDiagram Background="White" x:Name="diagram" DefaultConnectorType="Line">
+
+            <!--Sets the Border color for Page-->
+            <syncfusion:SfDiagram.PageSettings>
+                <syncfusion:PageSettings>
+                    <syncfusion:PageSettings.PageBorderBrush>
+                        <SolidColorBrush Color="Transparent"/>
+                    </syncfusion:PageSettings.PageBorderBrush>
+                </syncfusion:PageSettings>
+            </syncfusion:SfDiagram.PageSettings>
+
+            <!--Initialize Nodes-->
+            <syncfusion:SfDiagram.Nodes>
+                <syncfusion:NodeCollection/>
+            </syncfusion:SfDiagram.Nodes>
+
+            <!--Initialize Connectors-->
+            <syncfusion:SfDiagram.Connectors>
+                <syncfusion:ConnectorCollection/>
+            </syncfusion:SfDiagram.Connectors>
+        </syncfusion:SfDiagram>
+    </Grid>
+</Page>
